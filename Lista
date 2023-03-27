@@ -1,0 +1,193 @@
+import java.util.Scanner;
+public class Lista {
+    public static void main(String[] args) throws Exception {
+    Scanner leia = new Scanner (System.in);
+    Retangulo retangulo = new Retangulo ();
+    Pessoa pessoa = new Pessoa ();
+    ContaBancaria conta = new ContaBancaria();
+    Carro carro = new Carro ();
+    Data data = new Data ();
+    Animal animal = new Animal();
+    Aluno aluno = new Aluno ();
+    Circulo circulo = new Circulo();
+    Telefone telefone = new Telefone();
+    Livro livro = new Livro();
+
+    System.out.println("Qual programa deseja executar?");
+    System.out.println ("1 - Calculo do retangulo");
+    System.out.println ("2 - Maior de idade");
+    System.out.println ("3 - Saque em conta");
+    System.out.println ("4 - Carecteristica do Carro");
+    System.out.println ("5 - Ano Bissexto");
+    System.out.println ("6 - Som do animal");
+    System.out.println ("7 - Media do aluno");
+    System.out.println ("8 - Calculo do Circulo");
+    System.out.println ("9 - Telefone para contato");
+    System.out.println ("10 - Livro escrito");
+    int funcao = leia.nextInt();
+
+    if (funcao==1){
+    retangulo.calcularArea();
+    } else if (funcao==2){
+    pessoa.ehMaiorDeIdade();
+    } else if (funcao==3){
+    conta.saque();
+    } else if (funcao==4){
+    carro.getDescricao();
+    } else if (funcao==5){
+    data.ehBissexto();
+    } else if (funcao==6){
+    animal.emitirSom();
+    } else if (funcao==7){
+    aluno.calcularMedia();
+    } else if (funcao==8){
+    circulo.calcularArea();
+    } else if (funcao==9){
+    telefone.getNumeroCompleto();
+    } else if (funcao==10){
+    livro.getDescricao();
+    }
+ }
+}
+class Retangulo{
+    Scanner leia = new Scanner (System.in);
+    float base;
+    float altura;
+    void calcularArea(){
+    System.out.println("Digite a base: ");
+    this.base = leia.nextFloat();
+    System.out.println("Digite a altura: ");
+    this.altura = leia.nextFloat();
+    System.out.println("O valor da área é: "+base*altura);
+ }
+}
+class Pessoa{
+    Scanner leia = new Scanner (System.in);
+    String nome;
+    int idade;
+    void ehMaiorDeIdade(){
+    System.out.println("Digite seu nome: ");
+    this.nome = leia.next();
+    System.out.println("Digite sua idade: ");
+    this.idade = leia.nextInt();
+    if (this.idade>=18){
+    System.out.printf("O %s é maior de Idade",this.nome);
+    } else {
+    System.out.println("Não é maior de idade!");
+    }
+    }
+}
+class ContaBancaria{
+    Scanner leia = new Scanner (System.in);
+    double saldo = 1000;
+    double limite = 500;
+    void saque(){
+    System.out.println("Qual o valor do saque? ");
+    double valor = leia.nextDouble();
+    if (valor<=this.saldo+this.limite){
+    System.out.println("Saque disponivel!");
+    } else {
+    System.out.println("Saldo ou limite Insuficiente!");
+    }
+    }
+}
+class Carro {
+    Scanner leia = new Scanner (System.in);
+    String marca;
+    String modelo;
+    String ano;
+    void getDescricao(){
+    System.out.println("Insira as informaçoes do carro: ");
+    System.out.println("Marca: ");
+    this.marca = leia.nextLine();
+    System.out.println("Modelo: ");
+    this.modelo = leia.nextLine();
+    System.out.println("Ano: ");
+    this.ano = leia.nextLine();
+    }
+}
+class Data{
+    Scanner leia = new Scanner (System.in);
+    int dia;
+    int mes;
+    int ano;
+    void ehBissexto(){
+    System.out.println("Digite o ano presente: ");
+    int nEh = 0;
+    this.ano = leia.nextInt();
+    for (int i = 8; i<10000;i = i+4){
+    if (this.ano==i){
+        nEh = 1;
+    System.out.println("É um ano bissexto!");
+    } 
+    }
+    if (nEh==0){
+        System.out.println("Não é um ano bissexto");
+    }
+    }
+}
+class Animal{
+    Scanner leia = new Scanner (System.in);
+    String nome;
+    String especie;
+    void emitirSom(){
+    System.out.println("Digite o nome do animal: ");
+    this.nome = leia.next();
+
+    System.out.printf("https://www.youtube.com/results?search_query=som+do+animal+%s",this
+    .nome);
+    }
+}
+class Aluno{
+    Scanner leia = new Scanner (System.in);
+    String nome;
+    String matricula;
+    float notas;
+    void calcularMedia(){
+    float acum = 0;
+    for (int i = 1; i<4;i++){
+    System.out.printf("Digite a %d º nota: \n",i);
+    this.notas = leia.nextFloat();
+    acum = acum+notas;
+    }
+    float media = acum/3;
+    System.out.println("Media do aluno é: "+media);
+    }
+}
+class Circulo{
+    Scanner leia = new Scanner (System.in);
+    float raio;
+    void calcularArea(){
+    System.out.println("Digite o raio do circulo: ");
+    this.raio = leia.nextFloat();
+    float result = (float) (3.14*(raio*raio));
+    System.out.println("Área do circulo é: "+result);
+    }
+}
+class Telefone{
+    Scanner leia = new Scanner (System.in);
+    String ddd;
+    String numero;
+    void getNumeroCompleto(){
+    System.out.println("Qual o DDD do telefone? ");
+    this.ddd = leia.next();
+    System.out.println("Qual o numero do telefone? ");
+    this.numero = leia.next();
+    System.out.printf("Numero de telefone é: (%s)%s \n",ddd,numero);
+    }
+}
+class Livro{
+    Scanner leia = new Scanner (System.in);
+    String titulo;
+    String autor;
+    String anoPublicacao;
+    void getDescricao (){
+    System.out.println("Qual o titulo do livro: ");
+    this.titulo = leia.nextLine();
+    System.out.println("Qual o autor do livro: ");
+    this.autor = leia.nextLine();
+    System.out.println("Qual o Ano do livro: ");
+    this.anoPublicacao = leia.nextLine();
+    System.out.printf ("Titulo: %s \n Autor: %s \n Ano de Publicação: %s\n",this.titulo,this.autor,this.anoPublicacao);
+    }
+}
